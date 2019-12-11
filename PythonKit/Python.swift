@@ -616,8 +616,8 @@ public extension PythonObject {
     func dynamicallyCall(
         withKeywordArguments args:
         KeyValuePairs<String, PythonConvertible> = [:]
-    ) -> PythonObject {
-        return try! throwing.dynamicallyCall(withKeywordArguments: args)
+    ) throws -> PythonObject {
+        return try throwing.dynamicallyCall(withKeywordArguments: args)
     }
 }
 
