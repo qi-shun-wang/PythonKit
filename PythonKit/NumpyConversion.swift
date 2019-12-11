@@ -157,7 +157,7 @@ public extension Array where Element : NumpyScalarCompatible {
         return try withUnsafeBytes { bytes in
             let data = try ctypes.cast(Int(bitPattern: bytes.baseAddress),
                                    ctypes.POINTER(Element.ctype))
-            let ndarray = np.ctypeslib.as_array(data, shape: PythonObject(tupleOf: count))
+            let ndarray = try np.ctypeslib.as_array(data, shape: PythonObject(tupleOf: count))
             return try np.copy(ndarray)
         }
     }
